@@ -36,6 +36,10 @@ public class AlumnoServiceImpl implements AlumnoService {
             throw new IllegalArgumentException("Ya existe un alumno con este número de boleta");
         });
 
+        alumnoRepository.findByCorreo(nuevoAlumnoDto.getCorreo()).ifPresent(e -> {
+            throw new IllegalArgumentException("Ya existe un alumno con este correo");
+        });
+
         AlumnoEntity nuevoAlumno = new AlumnoEntity(nuevoAlumnoDto.getBoleta(), nuevoAlumnoDto.getNombre(),
                 nuevoAlumnoDto.getCorreo(),
                 nuevoAlumnoDto.getEdad());

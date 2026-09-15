@@ -15,6 +15,8 @@ import java.util.List;
 public interface AlumnoRepository extends JpaRepository<AlumnoEntity, Long>{
     Optional<AlumnoEntity> findByBoleta(Long boleta);
 
+    Optional<AlumnoEntity> findByCorreo(String correo);
+
     @Query 
     ("SELECT new com.upiiz.actividad_4.alumnos.dto.ListadoEdadesDto(p.edad, COUNT(p)) " +
            "FROM AlumnoEntity p " +
